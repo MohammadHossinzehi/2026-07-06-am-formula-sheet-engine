@@ -1,0 +1,11 @@
+{
+  "name": "formula-sheet-engine",
+  "version": "1.0.0",
+  "description": "A from scratch spreadsheet formula engine with a dependency graph, topological recalculation, and cycle detection.",
+  "type": "module",
+  "main": "src/engine.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "license": "MIT"
+}
