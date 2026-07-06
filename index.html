@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Formula Sheet Engine Demo</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #f5f6f8;
+      color: #1a1a1a;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 4px;
+    }
+    p.sub {
+      margin: 0 0 16px;
+      color: #555;
+      font-size: 13px;
+    }
+    #formula-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    #formula-bar span {
+      font-weight: 600;
+      font-size: 13px;
+      min-width: 28px;
+    }
+    #formula-input {
+      flex: 1;
+      padding: 6px 8px;
+      font-size: 13px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    table {
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      min-width: 84px;
+      height: 26px;
+      padding: 0 6px;
+      font-size: 13px;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    th {
+      background: #f0f1f3;
+      text-align: center;
+      color: #444;
+      font-weight: 600;
+    }
+    td.row-head {
+      background: #f0f1f3;
+      text-align: center;
+      font-weight: 600;
+      color: #444;
+    }
+    td.cell {
+      cursor: cell;
+    }
+    td.cell.selected {
+      outline: 2px solid #3b82f6;
+      outline-offset: -2px;
+    }
+    td.cell.error {
+      color: #c0392b;
+      font-weight: 600;
+    }
+    #examples {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #555;
+      max-width: 640px;
+      line-height: 1.5;
+    }
+    #examples code {
+      background: #eef0f3;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formula Sheet Engine</h1>
+  <p class="sub">A spreadsheet formula engine built from scratch. Click a cell, type a value or a formula starting with "=", press Enter.</p>
+
+  <div id="formula-bar">
+    <span id="active-ref">A1</span>
+    <input id="formula-input" type="text" autocomplete="off" spellcheck="false" />
+  </div>
+
+  <div id="grid-container"></div>
+
+  <div id="examples">
+    Try: <code>=SUM(B2:B5)</code>, <code>=AVERAGE(B2:B5)</code>, <code>=IF(A1&gt;10,"big","small")</code>,
+    <code>=A1*2+1</code>. Circular references (e.g. A1 <code>=B1</code>, B1 <code>=A1</code>) resolve to
+    <code>#CIRCULAR!</code>. Referencing an empty cell reads as 0.
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
